@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopCart</title>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="../shop">Shop</a></li>
+            <li><a href="">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<h1>This is your cart: </h1>
+<table>
+    <tr>
+        <td>Picture</td>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="item : ${cart}">
+        <td><img class="productImage" th:src="${item.getProduct().getImgLink()}"></td>
+        <td th:text="${item.getProduct().getName()}"></td>
+        <td th:text="${item.getQuantity()}"></td>
+        <td th:text="${item.getPrice()}"></td>
+        <td>
+            <a th:href="@{cart/remove(id=${item.getId()})}">Remove</a>
+        </td>
+    </tr>
+    <tr class="endRow">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td th:text="${total}"></td>
+        <td>
+            <a th:href="@{cart/removeAll}">Purchase</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

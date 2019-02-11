@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopcart</title>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="../cart">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<h1>Here is a list of our products:</h1>
+<table>
+    <tr>
+        <td>Picture</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Buy</td>
+    </tr>
+    <tr th:each="p : ${products}">
+        <td> <img class="productImage" th:src="${p.getImgLink()}"></td>
+        <td th:text="${p.getName()}">name</td>
+        <td th:text="${p.getPrice()}">price</td>
+        <td >
+            <a th:href="@{shop/add(id=${p.getId()})}">Buy</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

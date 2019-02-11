@@ -1,0 +1,17 @@
+.productImage {
+    height: 200px;
+    width: 200px;
+}
+
+.bigLink {
+    font-size: 100px;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr.endRow {
+    border-top: 2px solid #0f0f0f;
+}
